@@ -3,87 +3,113 @@ import { StatusBar } from "expo-status-bar";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
-  const [materia, setMateria] = useState("elegir materia");
-  const [materia2, setMateria2] = useState("elegir materia");
-  const [materia3, setMateria3] = useState("elegir materia");
-  const [mostrar, setMostrar] = useState(true);
+  const styles = StyleSheet.create({
+    header: {
+      backgroundColor: "#2196F3",
+      paddingVertical: 8,
+      paddingHorizontal: 20,
+    },
+    headerText: {
+      color: "#fff",
+      fontSize: 25,
+      textAlign: "center",
+    },
+    container: {
+      flex: 1,
+      backgroundColor: "#fff",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: 20,
+    },
+    input: {
+      height: 40,
+      borderColor: "#ddd",
+      borderWidth: 1,
+      borderRadius: 5,
+      padding: 10,
+      marginVertical: 10,
+      minWidth: 200,
+    },
+    button: {
+      backgroundColor: "#2196F3",
+      padding: 10,
+      borderRadius: 5,
+      marginVertical: 10,
+    },
+    buttonText: {
+      color: "#fff",
+      textAlign: "center",
+      fontSize: 18,
+    },
+    resultText: {
+      textAlign: "center",
+      fontSize: 20,
+    },
+    cajaTexto: {
+      margin: 10,
+      fontSize: 18,
+      textAlign: "center",
+      borderWidth: 1,
+      borderRadius: 3,
+      padding: 5,
+    },
+  });
+
+  const [materia1, setMateria1] = useState("");
+  const [materia2, setMateria2] = useState("");
+  const [materia3, setMateria3] = useState("");
+  const [mostrar, setMostrar] = useState(false);
+  
+  const inscribirse = () => {
+    setMostrar(true);
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Materias</Text>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Registro de Materias</Text>
+      </View>
+      <Text style={styles.indicador}>{"Primer materia"}</Text>
       <TextInput
+        placeholder="Nombre de la materia 1"
         style={styles.cajaTexto}
-        defaultValue={materia}
-        onChangeText={(newText) => setMateria(newText)}
+        defaultValue={materia1}
+        onChangeText={(newText) => setMateria1(newText)}
       />
+      <Text style={styles.indicador}>{"Segunda materia"}</Text>
       <TextInput
+        placeholder="Nombre de la materia 2"
         style={styles.cajaTexto}
         defaultValue={materia2}
         onChangeText={(newText) => setMateria2(newText)}
       />
+      <Text style={styles.indicador}>{"Tercer materia"}</Text>
       <TextInput
+        placeholder="Nombre de la materia 3"
         style={styles.cajaTexto}
         defaultValue={materia3}
         onChangeText={(newText) => setMateria3(newText)}
       />
       <Button
         onPress={() => {
-          setMostrar(!mostrar);
+          inscribirse();
         }}
+        disabled={mostrar}
         title={"Materias seleccionadas"}
       />
-      <Text>{mostrar ? materia:""}</Text>
-      <Text>{mostrar ? materia2:""}</Text>
-      <Text>{mostrar ? materia3:""}</Text>
-        
-    
+      <View>
+        {mostrar ? (
+          <View>
+            <Text style={styles.resultText}>{materia1}</Text>
+            <Text style={styles.resultText}>{materia2}</Text>
+            <Text style={styles.resultText}>{materia3}</Text>
+          </View>
+        ) : (
+          <Text>{""}</Text>
+        )}
+      </View>
+
       <StatusBar style="auto" />
     </View>
   );
-  /*const [materia, setMateria] = useState("Inscribirse a materia");
-
-  const Materias = (props) => {
-    return (
-      <View>
-        <Text>{props.nombre}</Text>
-      </View>
-    );
-  };
-
-  const getDatosAlumno = (nombre, carrera, especialidad) => {
-    return nombre + " " + carrera + " " + especialidad;
-  };
-
-  return (
-    <View style={styles.container}>
-      <Text>Hola {getDatosAlumno("Dianis", "ISC", "FullStack")} </Text>
-      <TextInput
-        style={styles.cajaTexto}
-        defaultValue="Nombre de materia"
-        onChangeText={(newText) => setMateria(newText)}
-        defaultValuee={materia}
-      />
-      <Text>MATERIAS</Text>
-      <Materias nombre={materia} />
-      <Materias nombre="Administración de Redes" />
-      <Materias nombre="Arquitectura de Servicios" />
-      <Materias nombre="Aplicaciones moviles"/>
-
-      <StatusBar style="auto" />
-    </View>
-  );*/
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  cajaTexto: {
-    height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
-    minWidth: 200,
-  },
-});

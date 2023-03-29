@@ -1,4 +1,291 @@
-import React, { useState } from 'react';
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+
+import { FlatList } from "react-native-gesture-handler";
+
+
+export default function App() {
+  const listas1 = ["Redes", "POO", "Redes 2", "Redes 3", "AWS"];
+  const listas2 = ["Calculo", "Contabilidad", "React", "Angular", "CSS"];
+  let numeroLista = 0;
+  let encab = false
+  l
+  const Materias = (props) => {
+    return (
+      <View>
+        <Text style={styles.materias}>
+          {props.nombre}
+        </Text>
+      </View>
+    );
+  };
+  return (
+    <View style={styles.container}>
+    <Text >{"Ingresa El numero de lista"}</Text>
+    <TextInput
+        style={styles.disenhoCaja}
+        onChangeText={(newText) => (numeroLista = newText)}
+        placeholder={"Mostrar lista"}
+      />
+      <Button
+        onPress={() => {
+        
+          }
+        }
+        title={"Revisar materia"}
+      />
+      <Text>{"Lista Materias"}</Text>
+      <FlatList
+       
+        data={listas1}
+        renderItem={({ item }) => <Materia nombre={item.key} found={item.found} />}
+      />
+      <FlatList
+       
+       data={listas2}
+       renderItem={({ item }) => <Materia nombre={item.key} found={item.found} />}
+     />
+     
+      
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  materias: {
+    fontSize: 30,
+    textAlign: "center",
+    margin: 10,
+    fontStyle: "italic",
+    color: "#25306b",
+    borderWidth:1,
+    borderRadius:10
+  },scroll: {
+    borderColor: "fffff",
+    
+    height: 400,
+    width: 300,
+  },disenhoCaja: {
+    margin: 10,
+    fontSize: 18,
+    textAlign: "center",
+    borderWidth: 1,
+    borderRadius: 3,
+    padding: 5,
+  }
+});
+
+
+/*import React, {useState} from 'react';
+import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
+
+const App = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+  return (
+    <View style={styles.centeredView}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Hello World!</Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}>
+              <Text style={styles.textStyle}>Hide Modal</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+      <Pressable
+        style={[styles.button, styles.buttonOpen]}
+        onPress={() => setModalVisible(true)}>
+        <Text style={styles.textStyle}>Show Modal</Text>
+      </Pressable>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+});
+
+export default App;*/
+
+
+
+/*import React from 'react';
+import {View, StyleSheet, Button, Alert} from 'react-native';
+
+const App = () => {
+  const createTwoButtonAlert = () =>
+    Alert.alert('Alert Title', 'My Alert Msg', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'OK', onPress: () => console.log('OK Pressed')},
+    ]);
+
+  const createThreeButtonAlert = () =>
+    Alert.alert('Alert Title', 'My Alert Msg', [
+      {
+        text: 'Ask me later',
+        onPress: () => console.log('Ask me later pressed'),
+      },
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'OK', onPress: () => console.log('OK Pressed')},
+    ]);
+
+  return (
+    <View style={styles.container}>
+      <Button title={'2-Button Alert'} onPress={createTwoButtonAlert} />
+      <Button title={'3-Button Alert'} onPress={createThreeButtonAlert} />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+});
+
+export default App;*/
+
+
+/*import React from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  SectionList,
+  StatusBar,
+} from 'react-native';
+
+const DATA = [
+  {
+    title: 'ISC',
+    data: ['Fundamentos de programacion', 'Bases de datos ', 'Programacion movil hibridas'],
+  },
+  {
+    title: 'ITICS',
+    data: ['French Fries', 'Onion Rings', 'Fried Shrimps'],
+  },
+  {
+    title: 'IGE',
+    data: ['Water', 'Coke', 'Beer'],
+  },
+  {
+    title: 'Desserts',
+    data: ['Cheese Cake', 'Ice Cream'],
+  },
+];
+
+const App = () => (
+  <SafeAreaView style={styles.container}>
+    <SectionList
+      sections={DATA}
+      keyExtractor={(item, index) => item + index}
+      renderItem={({item}) => (
+        <View style={styles.item}>
+          <Text style={styles.title}>{item}</Text>
+        </View>
+      )}
+      renderSectionHeader={({section: {title}}) => (
+        <Text style={styles.header}>{title}</Text>
+      )}
+    />
+  </SafeAreaView>
+);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: StatusBar.currentHeight,
+    marginHorizontal: 16,
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+  },
+  header: {
+    fontSize: 32,
+    backgroundColor: '#fff',
+  },
+  title: {
+    fontSize: 24,
+  },
+});
+
+export default App;*/
+
+
+
+
+/*import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
 
 const App = () => {
@@ -102,7 +389,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default App;*/
 
 
 
